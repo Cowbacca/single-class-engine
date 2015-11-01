@@ -2,6 +2,6 @@ package goldsmith.j.a.engine;
 
 public interface Alert {
 
-    public void run();
+    void run(Inputs inputs);
 
 }

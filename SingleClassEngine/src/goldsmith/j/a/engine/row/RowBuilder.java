@@ -1,10 +1,6 @@
 package goldsmith.j.a.engine.row;
 
-import goldsmith.j.a.engine.Action;
-import goldsmith.j.a.engine.Alert;
-import goldsmith.j.a.engine.Condition;
-import goldsmith.j.a.engine.Inputs;
-import goldsmith.j.a.engine.ScoreLambda;
+import goldsmith.j.a.engine.*;
 
 public class RowBuilder {
 
@@ -17,6 +13,11 @@ public class RowBuilder {
     protected RowBuilder(Inputs inputs, Condition condition) {
         this.inputs = inputs;
         this.condition = condition;
+        this.scoreLambda = scoreInputs -> 0;
+        this.action = actionInputs -> {
+        };
+        this.alert = alertInputs -> {
+        };
     }
 
     public RowBuilder scoreLambda(ScoreLambda scoreLambda) {

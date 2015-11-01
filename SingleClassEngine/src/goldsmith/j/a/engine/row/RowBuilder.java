@@ -1,17 +1,21 @@
 package goldsmith.j.a.engine.row;
 
 import goldsmith.j.a.engine.*;
+import goldsmith.j.a.engine.input.VariableName;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RowBuilder {
 
-    private Inputs inputs;
+    private final Map<VariableName, Integer> inputMap;
     private Condition condition;
     private ScoreLambda scoreLambda;
     private ActionLambda actionLambda;
     private AlertLambda alertLambda;
 
-    protected RowBuilder(Inputs inputs, Condition condition) {
-        this.inputs = inputs;
+    protected RowBuilder(Condition condition) {
+        this.inputMap = new HashMap<>();
         this.condition = condition;
         this.scoreLambda = scoreInputs -> 0;
         this.actionLambda = actionInputs -> {
@@ -35,8 +39,13 @@ public class RowBuilder {
         return this;
     }
 
+    public RowBuilder addInput(VariableName variableName, int value) {
+        inputMap.put(variableName, value);
+        return this;
+    }
+
     public Row build() {
-        Row row = new Row(inputs, condition);
+        Row row = new Row(new Inputs(inputMap), condition);
         row.setScoreLambda(scoreLambda);
         row.setActionLambda(actionLambda);
         row.setAlertLambda(alertLambda);

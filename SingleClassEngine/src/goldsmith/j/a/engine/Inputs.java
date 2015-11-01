@@ -1,21 +1,18 @@
 package goldsmith.j.a.engine;
 
+import goldsmith.j.a.engine.input.VariableName;
+
+import java.util.Map;
+
 public class Inputs {
 
-    private int age;
-    private int timeOff;
+    private Map<VariableName, Integer> inputMap;
 
-    public Inputs(int age, int timeOff) {
-        this.age = age;
-        this.timeOff = timeOff;
+    public Inputs(Map<VariableName, Integer> inputMap) {
+        this.inputMap = inputMap;
     }
 
-    public int getAge() {
-        return age;
+    public int getInput(VariableName variableName) {
+        return inputMap.get(variableName);
     }
-
-    public int getTimeOff() {
-        return timeOff;
-    }
-
 }

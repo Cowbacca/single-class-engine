@@ -4,7 +4,6 @@ import goldsmith.j.a.engine.*;
 
 public class Row {
     private Inputs inputs;
-
     private Condition condition;
     private ScoreLambda scoreLambda;
     private ActionLambda actionLambda;
@@ -36,7 +35,7 @@ public class Row {
         this.alertLambda = alertLambda;
     }
 
-    public static RowBuilder newBuilder(Inputs inputs, Condition condition) {
-        return new RowBuilder(inputs, condition);
+    public static RowBuilder newBuilder(Condition condition) {
+        return new RowBuilder(condition);
     }
 }

@@ -1,5 +1,6 @@
 package goldsmith.j.a.engine;
 
+import goldsmith.j.a.engine.input.VariableName;
 import goldsmith.j.a.engine.row.Row;
 
 public class Engine {
@@ -7,15 +8,16 @@ public class Engine {
 
     public void setup() {
         row = Row.newBuilder(
-                new Inputs(11, 2),
                 conditionInputs -> {
-                    if (conditionInputs.getAge() > 10) {
+                    if (conditionInputs.getInput(VariableName.AGE) > 10) {
                         return true;
                     } else {
                         return false;
                     }
                 })
-                .scoreLambda(scoreInputs -> scoreInputs.getTimeOff() * 2)
+                .scoreLambda(scoreInputs -> scoreInputs.getInput(VariableName.TIME_OFF) * 2)
+                .addInput(VariableName.AGE, 11)
+                .addInput(VariableName.TIME_OFF, 6)
                 .build();
     }
 

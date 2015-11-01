@@ -1,25 +1,25 @@
 package goldsmith.j.a.engine.row;
 
-import goldsmith.j.a.engine.ActionLambda;
-import goldsmith.j.a.engine.AlertLambda;
-import goldsmith.j.a.engine.Condition;
-import goldsmith.j.a.engine.ScoreLambda;
 import goldsmith.j.a.engine.input.Inputs;
+import goldsmith.j.a.engine.row.lambda.ActionLambda;
+import goldsmith.j.a.engine.row.lambda.AlertLambda;
+import goldsmith.j.a.engine.row.lambda.ConditionLambda;
+import goldsmith.j.a.engine.row.lambda.ScoreLambda;
 
 public class Row {
     private Inputs inputs;
-    private Condition condition;
+    private ConditionLambda conditionLambda;
     private ScoreLambda scoreLambda;
     private ActionLambda actionLambda;
     private AlertLambda alertLambda;
 
-    protected Row(Inputs inputs, Condition condition) {
+    protected Row(Inputs inputs, ConditionLambda conditionLambda) {
         this.inputs = inputs;
-        this.condition = condition;
+        this.conditionLambda = conditionLambda;
     }
 
     public void run() {
-        if (condition.passesCondition(inputs)) {
+        if (conditionLambda.passesCondition(inputs)) {
             System.out.println(scoreLambda.run(inputs));
             actionLambda.run(inputs);
             alertLambda.run(inputs);
@@ -39,7 +39,7 @@ public class Row {
         this.alertLambda = alertLambda;
     }
 
-    public static RowBuilder newBuilder(Condition condition) {
-        return new RowBuilder(condition);
+    public static RowBuilder newBuilder(ConditionLambda conditionLambda) {
+        return new RowBuilder(conditionLambda);
     }
 }

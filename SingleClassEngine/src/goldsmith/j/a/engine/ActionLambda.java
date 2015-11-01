@@ -1,6 +1,6 @@
 package goldsmith.j.a.engine;
 
-public interface Action {
+public interface ActionLambda {
 
     public void run(Inputs inputs);
 }

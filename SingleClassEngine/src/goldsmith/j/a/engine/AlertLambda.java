@@ -1,6 +1,6 @@
 package goldsmith.j.a.engine;
 
-public interface Alert {
+public interface AlertLambda {
 
     void run(Inputs inputs);
 

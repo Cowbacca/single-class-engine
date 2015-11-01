@@ -7,16 +7,16 @@ public class RowBuilder {
     private Inputs inputs;
     private Condition condition;
     private ScoreLambda scoreLambda;
-    private Action action;
-    private Alert alert;
+    private ActionLambda actionLambda;
+    private AlertLambda alertLambda;
 
     protected RowBuilder(Inputs inputs, Condition condition) {
         this.inputs = inputs;
         this.condition = condition;
         this.scoreLambda = scoreInputs -> 0;
-        this.action = actionInputs -> {
+        this.actionLambda = actionInputs -> {
         };
-        this.alert = alertInputs -> {
+        this.alertLambda = alertInputs -> {
         };
     }
 
@@ -25,21 +25,21 @@ public class RowBuilder {
         return this;
     }
 
-    public RowBuilder action(Action action) {
-        this.action = action;
+    public RowBuilder actionLambda(ActionLambda actionLambda) {
+        this.actionLambda = actionLambda;
         return this;
     }
 
-    public RowBuilder alert(Alert alert) {
-        this.alert = alert;
+    public RowBuilder alertLambda(AlertLambda alertLambda) {
+        this.alertLambda = alertLambda;
         return this;
     }
 
     public Row build() {
         Row row = new Row(inputs, condition);
         row.setScoreLambda(scoreLambda);
-        row.setAction(action);
-        row.setAlert(alert);
+        row.setActionLambda(actionLambda);
+        row.setAlertLambda(alertLambda);
         return row;
     };
 }

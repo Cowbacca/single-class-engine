@@ -1,6 +1,10 @@
 package goldsmith.j.a.engine.row;
 
-import goldsmith.j.a.engine.*;
+import goldsmith.j.a.engine.ActionLambda;
+import goldsmith.j.a.engine.AlertLambda;
+import goldsmith.j.a.engine.Condition;
+import goldsmith.j.a.engine.ScoreLambda;
+import goldsmith.j.a.engine.input.Inputs;
 import goldsmith.j.a.engine.input.VariableName;
 
 import java.util.HashMap;

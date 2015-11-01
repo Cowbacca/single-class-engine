@@ -1,6 +1,4 @@
-package goldsmith.j.a.engine;
-
-import goldsmith.j.a.engine.input.VariableName;
+package goldsmith.j.a.engine.input;
 
 import java.util.Map;
 
